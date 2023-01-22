@@ -21,4 +21,4 @@ Author: _hzhu20_
 
 - The `./src/working/` folder has `src/un-3.txt` and `src/un-4.txt` backups.
 - `src/un-3.txt`: All usernames without duplicate first, last, and middle names
-- `src/un-4.txt` Resolved duplicate usernames which was by first, last, middle name
+- `src/un-4.txt`: Resolved duplicate usernames which was by first, last, middle name
