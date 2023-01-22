@@ -2,8 +2,6 @@
 
 Author: _hzhu20_
 
-_Set permissions has needed for `.sh` scripts_
-
 ## Entrypoint: `./main`
 
 **Only after `src/un-3.txt` and `src/un-4.txt` are generated: Run `./addusers` and/or `./delusers`**
@@ -12,3 +10,14 @@ _Set permissions has needed for `.sh` scripts_
 
 1. Ensure the `csv` library is pre-built with your Python version
 2. Ensure you are on a Linux OS
+
+## Formatting of Usernames Decision
+
+- Excluding duplicates of first, last, and middle names, the format in `src/un-3.txt` is `[1-8 characters of first name][Full l_name]`
+- The format in `src/un-4.txt` is `[1-8 characters of first name][1-2 characters of middle name][Full l_name]`
+
+## Other Notes
+
+- The `./src/working/` folder has `src/un-3.txt` and `src/un-4.txt` backups.
+- `src/un-3.txt`: All usernames without duplicate first, last, and middle names
+- `src/un-4.txt` Resolved duplicate usernames which was by first, last, middle name
