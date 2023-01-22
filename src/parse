@@ -1,0 +1,31 @@
+#!/Users/harryzhu/.pyenv/shims/python3
+
+import csv
+
+# Special characters to remove in a string
+sc = "!\"#'\-.+% "
+
+# Open the input file and output file
+with open('./names.txt', 'r') as inp, open('./po-1.csv', 'w', newline='') as out:
+    # Create a CSV reader and writer
+    r = csv.reader(inp, delimiter='\t')
+    w = csv.writer(out)
+    # Write the rows from the input file to the output file
+
+    for row in r:
+
+        # remove the special characters in whole row
+        for ch in sc:
+            row = [c.replace(ch, '') for c in row]
+
+        # split the first name into a list
+        first_name_array = row[1].split()
+
+        # replace the first name
+        row[1] = first_name_array[0]
+
+        # write the row to the output file
+        w.writerow(row)
+
+
+# Path: parse

@@ -1,0 +1,52 @@
+#!/Users/harryzhu/.pyenv/shims/python3
+
+import csv
+
+# with 'dd-1.csv' as input file and 'cu-2.csv' as output file
+# the dd-1.csv contains lname,fname
+# so the cu-1.csv will contain 'f-initial + lname '
+
+usernames = []
+
+with open('./dd-1.csv', 'r') as inp, open('./cu-2.csv', 'w', newline='') as out:
+
+    # setup a csv reader and writer
+    r = csv.reader(inp, delimiter=',')
+    w = csv.writer(out)
+
+    # write the rows from the input file to the output file
+    for row in r:
+
+        # make it all lowercase
+        row = [c.lower() for c in row]
+
+        # make the username
+        username = row[1][0:8] + row[0]
+
+        # if username is already taken, add a number to the end
+        if username in usernames:
+            # find count of username that is not taken
+            count = 1
+            while username + str(count) in usernames:
+                count += 1
+
+            # make the new username
+            m_username = username + str(count)
+
+            # write the new username to the output file
+            w.writerow([m_username])
+
+            # add the username to the list
+            usernames.append(m_username)
+        else:
+            w.writerow([username])
+            
+            # add the username to the list
+            usernames.append(username)
+
+# turn usernames[] into a file.txt
+with open('./un-3.txt', 'w') as f:
+    for item in usernames:
+        f.write("%s\n" % item)
+
+# Path: create-user

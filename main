@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# This script is used to create a new user on the local system from
+# a csv file of users in the format of "lastname,firstname" with
+# one user per line and no password.
+
+# Make sure the script is being executed with superuser privileges.
+if [[ "${UID}" -ne 0 ]]
+then
+    echo 'Please run with sudo or as root.' >&2
+    exit 1
+fi
+
+chmod 775 src/parse
+chmod 775 src/detect
+chmod 775 src/create
+chmod 775 src/fix
+chmod 775 delusers
+chmod 775 addusers
+
+cd ./src
+
+# parse the file
+python3 parse
+
+# detect any error
+python3 detect
+
+# create the regular users (deal with duplicates)
+python3 create
+
+# fix the duplicates and create the users
+python3 fix
+
+cd ..
+
+# cleanup all files
+rm -f src/dd-1.csv src/cu-2.csv src/po-1.csv src/dn-1.txt
+
+# Path: main

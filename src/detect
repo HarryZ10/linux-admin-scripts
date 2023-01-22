@@ -1,0 +1,60 @@
+#!/Users/harryzhu/.pyenv/shims/python3
+
+import csv
+
+# Detecting duplicate first and last names
+# If duplicate, put the first, last, and middle name in a .txt file for manual review in
+# "dn-1.txt" file in the same directory 
+# 
+# else put the row in a .csv file for further processing in "dd-1.csv" file in the same directory
+
+with open('./po-1.csv', 'r') as inp, open('./dn-1.txt', 'w') as out, open('./dd-1.csv', 'w', newline='') as out2:
+    # setup csv reader and writer
+    r = csv.reader(inp)
+    w = csv.writer(out)
+    w2 = csv.writer(out2)
+
+    # create a list of first, last, middle names from the input file
+    names = []
+
+    # list of err names
+    errs = []
+
+    # read the rows from the input file
+    # append the first, last, and middle names to the list
+    for row in r:
+        names.append([row[1], row[2], row[3]])
+
+    # sort the list by row[1] (first name) and row[2] (last name) and row[3] (middle name)
+    names.sort()
+
+    # compare the first and last names of each row with the next row
+    # if the same, write the row to the output file
+    for i in range(len(names) - 1):
+
+        # index 0- last name
+        # index 1- first name
+
+        if names[i][1] == '' or names[i][0] == '':
+            errs.append(names[i])
+            errs.append(names[i + 1])
+            w.writerow(names[i])
+            w.writerow(names[i + 1])
+
+        elif names[i][0] == names[i + 1][0] and names[i][1] == names[i + 1][1]:
+
+            errs.append(names[i])
+            errs.append(names[i + 1])
+            w.writerow(names[i])
+            w.writerow(names[i + 1])
+
+    # remove the errs from the list
+    for d in errs:
+        names.remove(d)
+
+    # write the remaining rows to the output file
+    for row in names:
+        w2.writerow([row[0], row[1]])
+
+
+# Path: detect-dupes

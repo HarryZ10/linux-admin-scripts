@@ -1,0 +1,41 @@
+#!/Users/harryzhu/.pyenv/shims/python3
+
+# dn-1.txt is the list of duplicate usernames
+# un-4.txt is the list of unique usernames
+
+usernames = []
+
+# read the files
+with open('./dn-1.txt', 'r') as inp, open('./un-4.txt', 'w') as out:
+    
+    # create a username out of the first and last name and middle initial
+    # ex: Harry Jackson Zhu -> hjzhu
+    
+    for line in inp:
+        line = line.strip()
+        line = line.split(',')
+
+        # remove commas where there are no middle names
+        last = line[0].lower()
+        
+        if line[1] == '':
+            first = ''
+        else:
+            first = line[1][0:8].lower()
+       
+        if line[2] == '':
+            middle = ''
+        else:
+            middle = line[2][0:2].lower()
+
+        username = first + middle + last
+
+        if username in usernames:
+            username = username + '1'
+            usernames.append(username)
+            out.write(username + '\n')
+        else:
+            usernames.append(username)
+            out.write(username + '\n')
+
+# Path: fix
