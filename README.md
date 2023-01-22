@@ -13,7 +13,7 @@ Author: _hzhu20_
 
 ## Formatting of Usernames Decision
 
-- Excluding duplicates of first, last, and middle names, the format in `src/un-3.txt` is `[Maximum of 8 characters of first name][Full l_name]` (e.g `hzhu` or `harrisonzhu` or `harriszhu`)
+- The format in `src/un-3.txt` is `[Maximum of 8 characters of first name][Full l_name]` (e.g `hzhu` or `harrisonzhu` or `harriszhu`)
 
 - The format in `src/un-4.txt` is `[Maximum of 8 characters of first name][Maximum of 2 characters of middle name][Full l_name]` (e.g `Mjozhu` from `Mike Jo Zhu` or `harryjezhu` from `Harry Jerry Zhu`)
 
