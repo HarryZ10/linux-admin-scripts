@@ -1,4 +1,4 @@
-#!/Users/harryzhu/.pyenv/shims/python3
+#!/bin/python3
 
 import csv
 

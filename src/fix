@@ -1,4 +1,4 @@
-#!/Users/harryzhu/.pyenv/shims/python3
+#!/bin/python3
 
 # dn-1.txt is the list of duplicate usernames
 # un-4.txt is the list of unique usernames

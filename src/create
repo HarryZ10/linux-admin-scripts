@@ -1,5 +1,4 @@
-#!/Users/harryzhu/.pyenv/shims/python3
-
+#!/bin/python3
 import csv
 
 # with 'dd-1.csv' as input file and 'cu-2.csv' as output file

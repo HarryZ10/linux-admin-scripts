@@ -1,11 +1,14 @@
 #!/bin/bash
 
-count_added = 0
+# source ./progress-bar
+
+count_added=0
+
 # From a list of usernames in un-3.txt and un-4.txt, create the users
 for USERNAME in $(cat ./src/un-3.txt) $(cat ./src/un-4.txt)
 do
     # create the user
-    # useradd -m ${USERNAME}
+    sudo useradd -m ${USERNAME}
 
     # check to see if the useradd command succeeded
     if [[ "${?}" -ne 0 ]]
@@ -16,9 +19,12 @@ do
 
     # tell the user the account was created
     echo "The account ${USERNAME} was created."
-
+   
     # increment the number of accounts created
     count_added=$((count_added + 1))
+    
+    # update progress display
+    # show_progress $count_added 2802
 
 done
 

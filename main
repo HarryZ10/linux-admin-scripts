@@ -34,6 +34,10 @@ python3 fix
 
 cd ..
 
+echo "Successfully generated usernames. Please do not touch those files."
+echo "You can now run ./addusers or ./delusers"
+echo "WARNING: ./delusers will not work if you have not added any users yet."
+
 # cleanup all files
 rm -f src/dd-1.csv src/cu-2.csv src/po-1.csv src/dn-1.txt
 

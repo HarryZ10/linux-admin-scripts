@@ -1,22 +1,21 @@
 #!/bin/bash
 
-count_removed = 0
+count_removed=0
+
 # From a list of usernames in un-3.txt and un-4.txt, delete the users
 for USERNAME in $(cat ./src/un-3.txt) $(cat ./src/un-4.txt)
 do
     # delete the user
-    # userdel -r ${USERNAME}
-
+    sudo userdel -r ${USERNAME}
     # check to see if the useradd command succeeded
     # we don't want to tell the user that an account was created when it hasn't been
     if [[ "${?}" -ne 0 ]]
     then
-        echo "The account ${USERNAME} was NOT deleted." >&2
-        exit 1
+        echo "The account ${USERNAME} was NOT deleted." >&2    
+    else
+    	# tell the user the account was created
+    	echo "The account ${USERNAME} was deleted."
     fi
-
-    # tell the user the account was created
-    echo "The account ${USERNAME} was deleted."
 
     # increment the number of accounts created
     count_removed=$((count_removed + 1))
@@ -28,5 +27,5 @@ sleep 2.5
 
 clear
 
-# tell the user how many accounts were created
-echo "Total number of accounts created: ${count_removed}"
+# tell the user how many accounts were removed
+echo "Total number of accounts removed: ${count_removed}"
